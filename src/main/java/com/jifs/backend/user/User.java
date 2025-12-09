@@ -1,4 +1,4 @@
-package com.jifs.backend.security;
+package com.jifs.backend.user;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

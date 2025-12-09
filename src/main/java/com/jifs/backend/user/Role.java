@@ -1,4 +1,4 @@
-package com.jifs.backend.security;
+package com.jifs.backend.user;
 
 public enum Role {
     USER,
