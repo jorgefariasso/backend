@@ -2,6 +2,7 @@ package com.jifs.backend.user;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -34,10 +35,17 @@ public class UserService {
         return toDto(user);
     }
 
-    public Page<UserDto> findAll(int page, int size) {
-        return repo.findAll(PageRequest.of(page, size))
+    public Page<UserDto> findAll(Pageable pageable) {
+        return repo.findAll(pageable)
                 .map(this::toDto);
     }
+
+    public UserDto findById(Long id) {
+        User user = repo.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        return toDto(user);
+    }
+
 
     public UserDto update(Long id, UserUpdateDto dto) {
         User user = repo.findById(id)
@@ -71,5 +79,6 @@ public class UserService {
         dto.setRole(user.getRole());
         return dto;
     }
+
 
 }
