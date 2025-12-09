@@ -29,7 +29,7 @@ public class User {
 
     @NotBlank(message = "El nombre no puede estar vacío")
     @Column(nullable = false)
-    private String nombre;
+    private String username;
 
     @Email
     @NotBlank(message = "El email es obligatorio")
